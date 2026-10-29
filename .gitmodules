@@ -1,18 +1,24 @@
 [submodule "xserver"]
 	path = xserver
 	url = https://github.com/ztancrell/xserver.git
+	branch = master
 [submodule "xf86-input-libinput"]
 	path = xf86-input-libinput
 	url = https://github.com/ztancrell/xf86-input-libinput.git
+	branch = master
 [submodule "xf86-video-amdgpu"]
 	path = xf86-video-amdgpu
 	url = https://github.com/ztancrell/xf86-video-amdgpu.git
+	branch = master
 [submodule "fastcompmgr"]
 	path = fastcompmgr
 	url = https://github.com/ztancrell/fastcompmgr.git
+	branch = master
 [submodule "tint2"]
 	path = tint2
 	url = https://github.com/ztancrell/tint2.git
+	branch = master
 [submodule "openbox"]
 	path = openbox
 	url = https://github.com/ztancrell/openbox-patchwork.git
+	branch = main
