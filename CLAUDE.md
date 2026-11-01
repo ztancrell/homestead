@@ -20,7 +20,7 @@ here only for submodule pointer bumps, `CLAUDE.md`, `README.md` and `notes/`
 - Display manager: `ly` starts `/usr/local/bin/X`.
 - `openbox --startup` runs `~/.config/openbox/autostart`, which launches
   `/usr/local/bin/fastcompmgr --refresh-rate 100` and
-  `tint2 -c ~/.config/tint2/horizontal-text-only.tint2rc`.
+  `tint2 -c ~/.config/tint2/homestead.tint2rc`.
 - Stock pacman packages (`xlibre-xserver`, `openbox`, `fastcompmgr`, `tint2`)
   are still installed in `/usr/bin`; `/usr/local/bin` wins via PATH. A full-path
   `/usr/bin/...` launch gets the stock build.
