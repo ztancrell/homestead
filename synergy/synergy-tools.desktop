@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=synergy-tools
+Comment=Audio and files to your other PC
+Exec="/home/zpt/.local/bin/synergy-tools"
+Terminal=false
+X-GNOME-Autostart-enabled=true
