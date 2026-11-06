@@ -12,7 +12,8 @@ Each component is its own fork, tracked here as a git submodule.
 | `fastcompmgr` | [ztancrell/fastcompmgr](https://github.com/ztancrell/fastcompmgr) | compositor |
 | `tint2` | [ztancrell/tint2](https://github.com/ztancrell/tint2) | panel |
 
-`notes/` holds investigation notes. `CLAUDE.md` has build and install details.
+`notes/` holds investigation notes. `synergy/` holds my Synergy 3 setup (desktop shares
+keyboard/mouse with a MacBook Pro 2019, macOS + Boot Camp). `CLAUDE.md` has build and install details.
 
 ```sh
 git clone --recurse-submodules https://github.com/ztancrell/homestead.git
