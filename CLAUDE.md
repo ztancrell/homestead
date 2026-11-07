@@ -10,7 +10,6 @@ here only for submodule pointer bumps, `CLAUDE.md`, `README.md`, `notes/`
 |---|---|---|---|
 | `xserver` | ztancrell/xserver (XLibre) | meson, `build/`, prefix `/usr/local` | `/usr/local/bin/X`, modules in `/usr/local/lib/xorg/modules/xlibre-25` |
 | `xf86-input-libinput` | ztancrell/xf86-input-libinput | meson, `build/`, setup with `PKG_CONFIG_PATH=/usr/local/lib/pkgconfig` (else it builds against stock headers and installs into `/usr`) | `/usr/local/lib/xorg/modules/xlibre-25/input/libinput_drv.so` |
-| `xf86-video-amdgpu` | ztancrell/xf86-video-amdgpu | meson | not installed; X currently uses `modesetting` |
 | `openbox` | ztancrell/openbox-patchwork | autotools, `--prefix=/usr/local --enable-debug` | `/usr/local/bin/openbox` |
 | `fastcompmgr` | ztancrell/fastcompmgr | `make` | `/usr/local/bin/fastcompmgr` |
 | `tint2` | ztancrell/tint2 (remote `upstream` = gitlab.com/o9000/tint2, frozen since 2022) | cmake, `build/`, `-DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_TINT2CONF=OFF` | `/usr/local/bin/tint2` |
