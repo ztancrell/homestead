@@ -37,10 +37,11 @@ cert and asks to re-trust peers on a fresh install.
 `synergy-3.service` (systemd user unit from the package, bound to
 `graphical-session.target`) runs `/opt/Synergy/synergy-service -d`, which spawns the
 tray and `synergy-core server --settings ~/.config/Synergy/synergy-core.conf`.
-`synergy-tools` starts from the XDG autostart entry above.
-
-The `synergy &` line in `~/.config/openbox/autostart` does nothing: there is no `synergy`
-on PATH. The service already starts Synergy.
+`~/.config/openbox/autostart` starts the GUI with `/opt/Synergy/synergy &`. Use the full
+path: since 3.9.1 the package puts nothing on PATH, so a bare `synergy &` silently fails.
+`synergy-tools` starts from the XDG autostart entry above. Its binary came from the
+`synergy-tools-linux-x86_64` download (copy in `~/Downloads`), installed as
+`~/.local/bin/synergy-tools`.
 
 ## Restore
 
