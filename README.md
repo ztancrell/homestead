@@ -7,7 +7,6 @@ Each component is its own fork, tracked here as a git submodule.
 |---|---|---|
 | `xserver` | [ztancrell/xserver](https://github.com/ztancrell/xserver) | [XLibre](https://github.com/X11Libre/xserver) X server |
 | `xf86-input-libinput` | [ztancrell/xf86-input-libinput](https://github.com/ztancrell/xf86-input-libinput) | libinput input driver |
-| `xf86-video-amdgpu` | [ztancrell/xf86-video-amdgpu](https://github.com/ztancrell/xf86-video-amdgpu) | AMDGPU video driver (built, not in use; X runs `modesetting`) |
 | `openbox` | [ztancrell/openbox-patchwork](https://github.com/ztancrell/openbox-patchwork) | Openbox window manager |
 | `fastcompmgr` | [ztancrell/fastcompmgr](https://github.com/ztancrell/fastcompmgr) | compositor |
 | `tint2` | [ztancrell/tint2](https://github.com/ztancrell/tint2) | panel |
