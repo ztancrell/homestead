@@ -1,7 +1,7 @@
 # homestead
 
 My patched X11 desktop stack, running daily on CachyOS. It is installed as pacman packages
-built from these forks by [zpt2linux](https://github.com/ztancrell/zpt2linux) (`zpt2linux-desktop`).
+built from these forks by [zpt-cachy](https://github.com/ztancrell/zpt-cachy) (`zpt-cachy-desktop`).
 Each component is its own fork, tracked here as a git submodule.
 
 | Component | Fork | What it is |
