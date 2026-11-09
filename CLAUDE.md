@@ -9,7 +9,7 @@ here only for submodule pointer bumps, `CLAUDE.md`, `README.md`, `notes/`
 | Dir | Repo (origin) | Build (flags the PKGBUILD follows, prefix `/usr`) | Package (`../zpt2linux/pkgs/`) |
 |---|---|---|---|
 | `xserver` | ztancrell/xserver (XLibre) | meson, `build/` | `xlibre-xserver-homestead`: `/usr/bin/X`, modules in `/usr/lib/xorg/modules/xlibre-25` |
-| `xf86-input-libinput` | ztancrell/xf86-input-libinput | meson, `build/`, built against the xserver headers | `xlibre-input-libinput-homestead` : `/usr/lib/xorg/modules/xlibre-25/input/libinput_drv.so` (fetches the submodule commit from upstream X11Libre until the fork has it) |
+| `xf86-input-libinput` | ztancrell/xf86-input-libinput | meson, `build/`, built against the xserver headers | `xlibre-input-libinput-homestead`: `/usr/lib/xorg/modules/xlibre-25/input/libinput_drv.so` (fetches the submodule commit from upstream X11Libre until the fork has it) |
 | `openbox` | ztancrell/openbox-patchwork | autotools, `--enable-debug` | `openbox-homestead`: `/usr/bin/openbox` |
 | `fastcompmgr` | ztancrell/fastcompmgr | `make` | `fastcompmgr-homestead`: `/usr/bin/fastcompmgr` |
 | `tint2` | ztancrell/tint2 (remote `upstream` = gitlab.com/o9000/tint2, frozen since 2022) | cmake, `build/`, `-DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_TINT2CONF=OFF` | `tint2-homestead`: `/usr/bin/tint2` |
