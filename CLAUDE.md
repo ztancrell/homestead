@@ -23,6 +23,8 @@ zpt-cachy was called zpt2linux until 2026-11-09; `zpt-cachy-desktop` replaces `z
 To ship a component change: commit and push it in the fork, bump the submodule pointer here
 and push, then in `../zpt-cachy` bump `_commit` and `pkgver` in the matching PKGBUILD, test with
 `./build.sh`, push (CI rebuilds and publishes the repo), and `sudo pacman -Syu`.
+xserver and xf86-input-libinput have a weekly `upstream-merge` Action that opens a PR in the fork;
+shipping an upstream update starts by merging that PR.
 
 Superseded (2026-11-09): installed as pacman packages from ../zpt-cachy, prefix /usr. The
 components used to be built here and installed by hand into `/usr/local` (`--prefix=/usr/local`,
