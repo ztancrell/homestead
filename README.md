@@ -30,6 +30,8 @@ Each component is its own fork, tracked here as a git submodule.
 They are my `~/.config` files made machine-neutral: no monitor layout (xrandr), Synergy or
 redshift script, paths under `/usr/share/homestead`, `loginctl suspend`, and the cursor set by
 `XCURSOR_THEME` in the Openbox `environment`. Files in `~/.config` still override them.
+The autostart starts tint2 with `$HOMESTEAD_TINT2RC` when it is set, and the `environment` keeps
+an `XCURSOR_SIZE` set before it (24 otherwise); zpt-artix's `homestead-hidpi` sets both.
 
 `notes/` holds investigation notes. `synergy/` holds my Synergy 3 setup (desktop shares
 keyboard/mouse with a MacBook Pro 2019, macOS + Boot Camp). `CLAUDE.md` has build details and how a change gets shipped.

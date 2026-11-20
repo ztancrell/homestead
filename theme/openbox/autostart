@@ -18,5 +18,5 @@ sleep 1
 feh --bg-fill --randomize -r /usr/share/backgrounds/homestead
 
 # tint2 and dunst
-tint2 -c /etc/xdg/tint2/tint2rc &
+tint2 -c "${HOMESTEAD_TINT2RC:-/etc/xdg/tint2/tint2rc}" &
 dunst &
