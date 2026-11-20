@@ -25,6 +25,7 @@ Each component is its own fork, tracked here as a git submodule.
 | `openbox/{autostart,rc.xml,menu.xml,environment}` | `/etc/xdg/openbox/` |
 | `tint2/tint2rc`, `kitty/`, `obmenu-generator/` | `/etc/xdg/tint2/`, `/etc/xdg/kitty/`, `/etc/xdg/obmenu-generator/` |
 | `dunst/50-homestead.conf` | `/etc/dunst/dunstrc.d/` |
+| `fastfetch/config.jsonc` | `/etc/xdg/fastfetch/` |
 | `kde/kdeglobals`, `kde/Homestead.colors` | `/etc/xdg/kdeglobals`, `/usr/share/color-schemes/` |
 | `sounds/`, `scripts/` | `/usr/share/homestead/` |
 | `../wallpapers/` | `/usr/share/backgrounds/homestead/` |
