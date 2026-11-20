@@ -1,0 +1,59 @@
+#!/bin/sh
+# Volume and brightness keys with a dunst popup (bar via the int:value hint).
+# Usage: homestead-osd volume up|down|mute | brightness up|down | kbd up|down
+# No backlight device: does nothing. No notification daemon: the level still changes.
+
+notify() { # tag icon summary body [percent]
+    notify-send -u low -t 1500 -i "$2" -h "string:x-dunst-stack-tag:homestead-$1" \
+        ${5:+-h "int:value:$5"} "$3" "$4" >/dev/null 2>&1
+}
+
+case $1 in
+volume)
+    case $2 in
+    up) out=$(amixer set Master 5%+ unmute) ;;
+    down) out=$(amixer set Master 5%- unmute) ;;
+    mute) out=$(amixer set Master toggle) ;;
+    *) exit 2 ;;
+    esac || exit 1
+    paplay /usr/share/homestead/sounds/audio-volume-change.oga >/dev/null 2>&1 &
+    # amixer prints e.g. "Front Left: Playback 36043 [55%] [on]"
+    pct=$(printf '%s\n' "$out" | sed -n 's/.*\[\([0-9]*\)%\].*/\1/p' | head -n1)
+    if printf '%s\n' "$out" | grep -q '\[off\]'; then
+        notify volume audio-volume-muted Volume Muted
+    else
+        if [ "${pct:-0}" -eq 0 ]; then icon=muted
+        elif [ "$pct" -lt 34 ]; then icon=low
+        elif [ "$pct" -lt 67 ]; then icon=medium
+        else icon=high; fi
+        notify volume "audio-volume-$icon" Volume "$pct%" "$pct"
+    fi
+    ;;
+brightness | kbd)
+    tag=$1
+    if [ "$1" = brightness ]; then
+        set -- "$2" -c backlight --min-value=1%
+        step=5% icon=display-brightness title=Brightness
+    else
+        set -- "$2" -d '*kbd_backlight' --min-value=0
+        # brightnessctl -m: device,class,current,percent,max
+        info=$(brightnessctl -m "$2" "$3" info 2>/dev/null) || exit 0
+        step=$(( ${info##*,} / 16 )); [ "$step" -gt 0 ] || step=1
+        icon=keyboard-brightness title=Keyboard
+    fi
+    case $1 in
+    up) sign=+ ;;
+    down) sign=- ;;
+    *) exit 2 ;;
+    esac
+    shift
+    out=$(brightnessctl -m "$@" set "$step$sign" 2>/dev/null) || exit 0
+    pct=$(printf '%s\n' "$out" | cut -d, -f4 | tr -d %)
+    notify "$tag" "$icon" "$title" "$pct%" "$pct"
+    ;;
+*)
+    echo "usage: ${0##*/} volume up|down|mute | brightness up|down | kbd up|down" >&2
+    exit 2
+    ;;
+esac
+exit 0

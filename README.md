@@ -32,6 +32,12 @@ redshift script, paths under `/usr/share/homestead`, `loginctl suspend`, and the
 `XCURSOR_THEME` in the Openbox `environment`. Files in `~/.config` still override them.
 The autostart starts tint2 with `$HOMESTEAD_TINT2RC` when it is set, and the `environment` keeps
 an `XCURSOR_SIZE` set before it (24 otherwise); zpt-artix's `homestead-hidpi` sets both.
+The volume, screen brightness and keyboard backlight keys in `rc.xml` run
+`scripts/homestead-osd` (`volume up|down|mute`, `brightness up|down`, `kbd up|down`): amixer
+Master in 5% steps with the click sound, brightnessctl on the backlight (5%, never below 1%) or on
+`*kbd_backlight` (1/16 steps), then a short dunst popup with a level bar (notify-send, with an
+`x-dunst-stack-tag` so repeated presses replace one popup). Without a backlight device the
+brightness keys do nothing.
 
 `notes/` holds investigation notes. `synergy/` holds my Synergy 3 setup (desktop shares
 keyboard/mouse with a MacBook Pro 2019, macOS + Boot Camp). `CLAUDE.md` has build details and how a change gets shipped.
