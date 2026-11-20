@@ -1,3 +1,7 @@
+# The D-Bus session bus starts (OpenRC user service) before X, so services it starts (xdg-desktop-portal-gtk:
+# file dialogs for Steam, Firefox, Flatpaks) had no DISPLAY and exited. Hand them the session's environment.
+dbus-update-activation-environment DISPLAY XAUTHORITY XDG_SESSION_TYPE QT_QPA_PLATFORMTHEME XCURSOR_THEME XCURSOR_SIZE
+
 # obmenu-generator has no system config.pl and would write xterm defaults: start from Homestead's
 [ -d ~/.config/obmenu-generator ] || cp -r /etc/xdg/obmenu-generator ~/.config/obmenu-generator
 
