@@ -12,3 +12,8 @@
 # Homestead cursor (Artix's default-cursors owns /usr/share/icons/default and points it at Adwaita)
 export XCURSOR_THEME=Homestead-Cursor
 export XCURSOR_SIZE=${XCURSOR_SIZE:-24}
+
+# Qt follows the GTK theme. Artix's /etc/environment sets QT_QPA_PLATFORMTHEME and QT_STYLE_OVERRIDE to
+# gtk4, which is no Qt plugin, so Qt fell back to light Fusion. Qt 5 and 6 both ship the gtk3 platform theme.
+export QT_QPA_PLATFORMTHEME=gtk3
+unset QT_STYLE_OVERRIDE

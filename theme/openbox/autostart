@@ -20,3 +20,9 @@ feh --bg-fill --randomize -r /usr/share/backgrounds/homestead
 # tint2 and dunst
 tint2 -c "${HOMESTEAD_TINT2RC:-/etc/xdg/tint2/tint2rc}" &
 dunst &
+
+# XDG autostart (/etc/xdg/autostart, ~/.config/autostart): nm-applet, blueman-applet, pasystray and the like.
+# openbox-autostart's own openbox-xdg-autostart needs python-pyxdg, which isn't installed, so it runs nothing;
+# dex honours OnlyShowIn/NotShowIn and Hidden=true. After tint2 so the tray is up when the applets dock.
+sleep 1
+dex -a -e Openbox &

@@ -24,6 +24,8 @@ Each component is its own fork, tracked here as a git submodule.
 | `gtk-3.0/settings.ini`, `gtk-4.0/settings.ini` | `/etc/gtk-3.0/`, `/etc/gtk-4.0/` |
 | `openbox/{autostart,rc.xml,menu.xml,environment}` | `/etc/xdg/openbox/` |
 | `tint2/tint2rc`, `kitty/`, `obmenu-generator/` | `/etc/xdg/tint2/`, `/etc/xdg/kitty/`, `/etc/xdg/obmenu-generator/` |
+| `dunst/50-homestead.conf` | `/etc/dunst/dunstrc.d/` |
+| `kde/kdeglobals`, `kde/Homestead.colors` | `/etc/xdg/kdeglobals`, `/usr/share/color-schemes/` |
 | `sounds/`, `scripts/` | `/usr/share/homestead/` |
 | `../wallpapers/` | `/usr/share/backgrounds/homestead/` |
 
@@ -38,6 +40,14 @@ Master in 5% steps with the click sound, brightnessctl on the backlight (5%, nev
 `*kbd_backlight` (1/16 steps), then a short dunst popup with a level bar (notify-send, with an
 `x-dunst-stack-tag` so repeated presses replace one popup). Without a backlight device the
 brightness keys do nothing.
+The autostart then runs `dex -a -e Openbox` for the XDG autostart entries (nm-applet,
+blueman-applet, pasystray...): openbox-autostart's own `openbox-xdg-autostart` needs python-pyxdg
+and runs nothing without it. The `environment` sets `QT_QPA_PLATFORMTHEME=gtk3` and unsets
+`QT_STYLE_OVERRIDE`, so Qt apps follow the GTK theme (Artix's `/etc/environment` sets both to
+`gtk4`, which is no Qt plugin). Notifications use the Homestead colours through a dunst drop-in
+(dunst reads `/etc/dunst`, not `/etc/xdg`, when `XDG_CONFIG_DIRS` is unset), and KDE apps through
+`/etc/xdg/kdeglobals`, which repeats the `Homestead` colour scheme's colours (KDE apps read them
+from kdeglobals, not from the scheme file).
 
 `notes/` holds investigation notes. `synergy/` holds my Synergy 3 setup (desktop shares
 keyboard/mouse with a MacBook Pro 2019, macOS + Boot Camp). `CLAUDE.md` has build details and how a change gets shipped.
