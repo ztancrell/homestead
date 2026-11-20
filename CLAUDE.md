@@ -4,7 +4,8 @@ Workspace for my patched Linux desktop stack (CachyOS, X11). This folder is the
 umbrella repo ztancrell/homestead; each component dir is its own git repo, tracked
 here as a submodule. Commit and push component changes inside that repo; commit
 here only for submodule pointer bumps, `CLAUDE.md`, `README.md`, `notes/`
-(investigation notes) and `synergy/` (Synergy 3 config, see `synergy/README.md`).
+(investigation notes), `synergy/` (Synergy 3 config, see `synergy/README.md`), `theme/`
+(Homestead system defaults) and `wallpapers/` (both packaged by ../zpt-artix, see `README.md`).
 
 | Dir | Repo (origin) | Build (flags the PKGBUILD follows, prefix `/usr`) | Package (`../zpt-cachy/pkgs/`) |
 |---|---|---|---|

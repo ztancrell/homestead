@@ -1,0 +1,22 @@
+# obmenu-generator has no system config.pl and would write xterm defaults: start from Homestead's
+[ -d ~/.config/obmenu-generator ] || cp -r /etc/xdg/obmenu-generator ~/.config/obmenu-generator
+
+# polkit agent (if present)
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# login sound
+paplay /usr/share/homestead/sounds/desktop-login.oga >/dev/null 2>&1 &
+
+# USB plug/unplug sounds
+bash /usr/share/homestead/scripts/device-monitor.sh >/dev/null 2>&1 &
+
+# compositor (fastcompmgr-homestead)
+/usr/bin/fastcompmgr &
+sleep 1
+
+# wallpaper (FIXED: removed trailing '>')
+feh --bg-fill --randomize -r /usr/share/backgrounds/homestead
+
+# tint2 and dunst
+tint2 -c /etc/xdg/tint2/tint2rc &
+dunst &
