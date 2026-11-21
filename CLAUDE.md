@@ -1,13 +1,13 @@
 # homestead
 
-Workspace for my patched Linux desktop stack (CachyOS, X11). This folder is the
+Workspace for my patched Linux desktop stack (Artix Linux, OpenRC, X11). This folder is the
 umbrella repo ztancrell/homestead; each component dir is its own git repo, tracked
 here as a submodule. Commit and push component changes inside that repo; commit
 here only for submodule pointer bumps, `CLAUDE.md`, `README.md`, `notes/`
 (investigation notes), `synergy/` (Synergy 3 config, see `synergy/README.md`), `theme/`
 (Homestead system defaults) and `wallpapers/` (both packaged by ../zpt-artix, see `README.md`).
 
-| Dir | Repo (origin) | Build (flags the PKGBUILD follows, prefix `/usr`) | Package (`../zpt-cachy/pkgs/`) |
+| Dir | Repo (origin) | Build (flags the PKGBUILD follows, prefix `/usr`) | Package (`../zpt-artix/pkgs/`) |
 |---|---|---|---|
 | `xserver` | ztancrell/xserver (XLibre) | meson, `build/` | `xlibre-xserver-homestead`: `/usr/bin/X`, modules in `/usr/lib/xorg/modules/xlibre-25` |
 | `xf86-input-libinput` | ztancrell/xf86-input-libinput | meson, `build/`, built against the xserver headers | `xlibre-input-libinput-homestead`: `/usr/lib/xorg/modules/xlibre-25/input/libinput_drv.so` (fetches the submodule commit from upstream X11Libre until the fork has it) |
@@ -16,13 +16,17 @@ here only for submodule pointer bumps, `CLAUDE.md`, `README.md`, `notes/`
 | `tint2` | ztancrell/tint2 (remote `upstream` = gitlab.com/o9000/tint2, frozen since 2022) | cmake, `build/`, `-DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_TINT2CONF=OFF` | `tint2-homestead`: `/usr/bin/tint2` |
 
 The packages replace the stock `xlibre-xserver`, `xlibre-input-libinput`, `openbox`,
-`fastcompmgr` and `tint2`; `zpt-cachy-desktop` pulls them all in. They come from the
-`[zpt-cachy]` repo: the signed GitHub release CI publishes from ../zpt-cachy, or its local
-`file://` build for testing (`sudo pacman -Syu`; first install `sudo pacman -S zpt-cachy-desktop`).
-zpt-cachy was called zpt2linux until 2026-11-09; `zpt-cachy-desktop` replaces `zpt2linux-desktop`.
+`fastcompmgr` and `tint2`; `zpt-artix-desktop` pulls them all in. They come from the
+`[zpt-artix]` repo: the signed GitHub release CI publishes from ../zpt-artix, or its local
+`file://` build for testing (`sudo pacman -Syu`; first install `sudo pacman -S zpt-artix-desktop`).
+
+Superseded (2026-11-21): packaged by ../zpt-cachy (`[zpt-cachy]`, `zpt-cachy-desktop`) while this
+machine ran CachyOS; zpt-cachy was called zpt2linux until 2026-11-09. The machine now runs Artix and
+the packages come from ../zpt-artix; the local zpt-cachy clone was deleted (GitHub ztancrell/zpt-cachy
+remains).
 
 To ship a component change: commit and push it in the fork, bump the submodule pointer here
-and push, then in `../zpt-cachy` bump `_commit` and `pkgver` in the matching PKGBUILD, test with
+and push, then in `../zpt-artix` bump `_commit` and `pkgver` in the matching PKGBUILD, test with
 `./build.sh`, push (CI rebuilds and publishes the repo), and `sudo pacman -Syu`.
 xserver and xf86-input-libinput have a weekly `upstream-merge` Action that opens a PR in the fork;
 shipping an upstream update starts by merging that PR.
