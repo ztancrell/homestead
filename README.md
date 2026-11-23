@@ -42,6 +42,9 @@ Master in 5% steps with the click sound, brightnessctl on the backlight (5%, nev
 `*kbd_backlight` (1/16 steps), then a short dunst popup with a level bar (notify-send, with an
 `x-dunst-stack-tag` so repeated presses replace one popup). Without a backlight device the
 brightness keys do nothing.
+The media keys (play/pause, next, previous, stop) run `playerctl`, so they control whichever MPRIS
+player is running (mpv with mpv-mpris). W-m opens mpv with `--player-operation-mode=pseudo-gui`,
+an empty window you can drop files on.
 The autostart then runs `dex -a -e Openbox` for the XDG autostart entries (nm-applet,
 blueman-applet, pasystray...): openbox-autostart's own `openbox-xdg-autostart` needs python-pyxdg
 and runs nothing without it. The `environment` sets `QT_QPA_PLATFORMTHEME=gtk3` and unsets
