@@ -2,7 +2,7 @@
 
 My patched X11 desktop stack, running daily on Artix Linux (OpenRC). It is installed as pacman packages
 built from these forks by [zpt-artix](https://github.com/ztancrell/zpt-artix) (`zpt-artix-desktop`).
-Superseded (2026-11-21): on CachyOS it was packaged by [zpt-cachy](https://github.com/ztancrell/zpt-cachy).
+Superseded (2026-11-21): on CachyOS it was packaged by zpt-cachy (GitHub repo deleted 2026-11-23).
 Each component is its own fork, tracked here as a git submodule.
 
 | Component | Fork | What it is |
