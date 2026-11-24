@@ -53,6 +53,8 @@ and runs nothing without it. The `environment` sets `QT_QPA_PLATFORMTHEME=gtk3` 
 (dunst reads `/etc/dunst`, not `/etc/xdg`, when `XDG_CONFIG_DIRS` is unset), and KDE apps through
 `/etc/xdg/kdeglobals`, which repeats the `Homestead` colour scheme's colours (KDE apps read them
 from kdeglobals, not from the scheme file).
+The `Homestead` icon theme ships no icons of its own: it inherits `Papirus-Dark`
+(papirus-icon-theme), then `hicolor`, and the dunst drop-in looks icons up in the same order.
 
 `notes/` holds investigation notes. `synergy/` holds my Synergy 3 setup (desktop shares
 keyboard/mouse with a MacBook Pro 2019, macOS + Boot Camp). `CLAUDE.md` has build details and how a change gets shipped.

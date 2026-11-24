@@ -1,5 +1,5 @@
 [Icon Theme]
 Name=Homestead
-Comment=Homestead icons, inheriting Breeze Dark
-Inherits=breeze-dark,hicolor
+Comment=Homestead icons, inheriting Papirus-Dark
+Inherits=Papirus-Dark,hicolor
 Directories=
