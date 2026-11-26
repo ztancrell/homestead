@@ -34,6 +34,10 @@ Each component is its own fork, tracked here as a git submodule.
 They are my `~/.config` files made machine-neutral: no monitor layout (xrandr), Synergy or
 redshift script, paths under `/usr/share/homestead`, `loginctl suspend`, and the cursor set by
 `XCURSOR_THEME` in the Openbox `environment`. Files in `~/.config` still override them.
+The autostart starts `xss-lock --transfer-sleep-lock -- i3lock -n -c 0d0d0d`: the screen locks
+(near-black i3lock) before every suspend, including the sleep key's `loginctl suspend`, on
+`loginctl lock-session`, and when the X screensaver starts (X's default: after 10 idle minutes).
+W-l and the screensaver key still run `slock` directly.
 The autostart starts tint2 with `$HOMESTEAD_TINT2RC` when it is set, and the `environment` keeps
 an `XCURSOR_SIZE` set before it (24 otherwise); zpt-artix's `homestead-hidpi` sets both.
 The volume, screen brightness and keyboard backlight keys in `rc.xml` run

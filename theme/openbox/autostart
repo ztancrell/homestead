@@ -11,6 +11,11 @@ dbus-update-activation-environment DISPLAY XAUTHORITY XDG_SESSION_TYPE QT_QPA_PL
 # login sound
 paplay /usr/share/homestead/sounds/desktop-login.oga >/dev/null 2>&1 &
 
+# screen lock: i3lock before every suspend (elogind's PrepareForSleep; rc.xml's XF86Sleep runs loginctl suspend),
+# on loginctl lock-session and when the X screensaver starts. -n keeps i3lock in the foreground, so
+# --transfer-sleep-lock holds the suspend until the lock is up.
+xss-lock --transfer-sleep-lock -- i3lock -n -c 0d0d0d &
+
 # USB plug/unplug sounds
 bash /usr/share/homestead/scripts/device-monitor.sh >/dev/null 2>&1 &
 
