@@ -3,14 +3,20 @@
 SOUND_DIR="/usr/share/homestead/sounds"
 AUDIO_ADDED="$SOUND_DIR/device-added.oga"
 AUDIO_REMOVED="$SOUND_DIR/device-removed.oga"
-COOLDOWN_FILE="/tmp/device-monitor-cooldown"
+# Per-user state dir: a shared /tmp file could be planted by another user, and its content
+# ends up in $(( )), where bash runs command substitutions such as a[$(cmd)].
+STATE_DIR="${XDG_RUNTIME_DIR:-$HOME/.cache/homestead}"
+mkdir -p -m 700 "$STATE_DIR"
+COOLDOWN_FILE="$STATE_DIR/device-monitor-cooldown"
 COOLDOWN_SECONDS=3
 
 play_sound() {
     local sound_file="$1"
 
     if [ -f "$COOLDOWN_FILE" ]; then
-        last_play=$(cat "$COOLDOWN_FILE" 2>/dev/null || echo 0)
+        last_play=$(cat "$COOLDOWN_FILE" 2>/dev/null)
+        # Only a plain number reaches the arithmetic below
+        [[ "$last_play" =~ ^[0-9]+$ ]] || last_play=0
         now=$(date +%s)
         if [ $((now - last_play)) -lt $COOLDOWN_SECONDS ]; then
             return
