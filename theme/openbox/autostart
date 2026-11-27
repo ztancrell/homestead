@@ -8,8 +8,8 @@ dbus-update-activation-environment DISPLAY XAUTHORITY XDG_SESSION_TYPE QT_QPA_PL
 # polkit agent (if present)
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-# login sound
-paplay /usr/share/homestead/sounds/desktop-login.oga >/dev/null 2>&1 &
+# login sound, at 40% (paplay: 65536 = 100%); full volume was too loud
+paplay --volume=26214 /usr/share/homestead/sounds/desktop-login.oga >/dev/null 2>&1 &
 
 # screen lock: i3lock before every suspend (elogind's PrepareForSleep; rc.xml's XF86Sleep runs loginctl suspend),
 # on loginctl lock-session and when the X screensaver starts. -n keeps i3lock in the foreground, so
