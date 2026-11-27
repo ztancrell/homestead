@@ -1,0 +1,25 @@
+#!/bin/sh
+# Screenshot keys: scrot saves a PNG, xclip puts its path on the clipboard (paste it into
+# Claude Code or a terminal), then a short dunst popup names the file.
+# Usage: homestead-shot full|region|window
+# Region: drag a rectangle (or click a window); Esc cancels and nothing is saved or copied.
+
+dir=$(xdg-user-dir PICTURES 2>/dev/null)
+dir=${dir:-$HOME/Pictures}/Screenshots
+mkdir -p "$dir" || exit 1
+file=$dir/$(date +%Y-%m-%d_%H%M%S).png
+
+case $1 in
+full) set -- ;;
+# -f freezes the screen while selecting. The short sleep lets Openbox release its key grab,
+# so scrot can grab the keyboard and pointer.
+region) sleep 0.2; set -- -s -f -l mode=edge ;;
+window) set -- -u ;;
+*) echo "usage: homestead-shot full|region|window" >&2; exit 2 ;;
+esac
+
+scrot -o "$@" "$file" || exit 1
+printf %s "$file" | xclip -selection clipboard
+notify-send -u low -t 2500 -i camera-photo -h string:x-dunst-stack-tag:homestead-shot \
+    "Screenshot saved, path copied" "$file" >/dev/null 2>&1
+exit 0

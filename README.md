@@ -46,6 +46,10 @@ Master in 5% steps with the click sound, brightnessctl on the backlight (5%, nev
 `*kbd_backlight` (1/16 steps), then a short dunst popup with a level bar (notify-send, with an
 `x-dunst-stack-tag` so repeated presses replace one popup). Without a backlight device the
 brightness keys do nothing.
+The screenshot keys run `scripts/homestead-shot`: Print captures the whole screen, Shift+Print a
+dragged rectangle (or a clicked window; Esc cancels), Alt+Print the focused window. scrot saves a
+PNG to `~/Pictures/Screenshots/` (the XDG pictures dir), xclip copies its path to the clipboard,
+and a dunst popup names the file, so a screenshot is one paste away from a Claude Code prompt.
 The media keys (play/pause, next, previous, stop) run `playerctl`, so they control whichever MPRIS
 player is running (mpv with mpv-mpris). W-m opens mpv with `--player-operation-mode=pseudo-gui`,
 an empty window you can drop files on.
